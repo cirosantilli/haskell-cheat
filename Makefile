@@ -1,10 +1,11 @@
 .PHONY: all clean
 
-run: all
-	./main
-
 all:
 	ghc main.hs
+	ghc hello_world.hs
 
 clean:
-	rm -f main main.hi main.o
+	rm -f main hello_world *.hi *.o
+
+run: all
+	./main

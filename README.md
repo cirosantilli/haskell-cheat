@@ -36,3 +36,17 @@ Then there are only 4 possible functions:
 - identity
 
 In a language like C, this is of course not possible since the output of the function can depend on global variables.
+
+## Package management
+
+Central archive: Hackage <http://hackage.haskell.org/>
+
+Function search engine: Hoogle <http://www.haskell.org/hoogle/>
+
+## GHC
+
+## Glorious Haskell Compiler
+
+Main compiler.
+
+Manual: <http://www.haskell.org/ghc/docs/latest/html/users_guide/>
