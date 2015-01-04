@@ -4,14 +4,10 @@
     <http://www.haskell.org/haskellwiki/Language_and_library_specification>
 -}
 
--- TODO how to get an assert function working!?!?!?!?!?!!?!??
--- import Control.Exception -- assert
-
 import System.Exit -- exitSucess
+import Control.Exception
 
--- assert :: Bool -> Maybe (IO ())
--- assert False = Just $ error "Assertion failed!"
--- assert _     = Nothing
+f = return ()
 
 {-
 # Comments
@@ -31,7 +27,7 @@ comment.
     There is no distinction between functions and variables.
 -}
 
-f = 1
+noArgs = 1
 
 -- ERROR: multiple declarations for f.
 --f = 1
@@ -53,6 +49,12 @@ hasTypeDecl = 1
 
 hasTypeDeclSum :: Int -> Int -> Int
 hasTypeDeclSum x y = x + y
+
+sum :: Int -> Int -> Int
+sum x y = x + y
+
+sub :: Int -> Int -> Int
+sub x y = x - y
 
 -- ERROR: no instance for (Num Char)
 --hasWrongTypeDecl :: Char
@@ -79,11 +81,27 @@ intToChar 1 = "one"
 intToChar 2 = "two"
 intToChar x = "other"
 
+{-
+#main
+
+Main has to return an `IO ()`.
+
+The following all fail:
+
+    main = 1
+    main = True
+-}
 main = do
-    putStrLn "a"
-    putStrLn(intToChar 1)
-    {-assert False $ 0-}
-    assert True
+    assert True f
+    --assert False f
+
+    {-
+    #Dollar sign
+
+        a $ b c == a (b c)
+    -}
+    assert ((sub 3 $ sub 2 1) == 2) f
+    {-assert ((sub 3 sub 2 1) == 1) f-}
 
 {-
 #if #else
