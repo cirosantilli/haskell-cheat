@@ -91,6 +91,7 @@ The following all fail:
     main = 1
     main = True
 -}
+
 main = do
     assert True f
     --assert False f
@@ -112,3 +113,5 @@ Every if must have an else, because everything must return a value.
 {-
 #function
 -}
+
+data List a = Nil | Cons a (List a)
